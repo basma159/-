@@ -17,22 +17,19 @@
         rel="stylesheet">
 </head>
 
-<body class="h-[3000px] bg-[linear-gradient(to_right,#273338,#2B5748,#618764,#9CB080)]">
+<body class="bg-[linear-gradient(to_right,#273338,#2B5748,#618764,#9CB080)]">
 
     <!-- header section -->
     <header
         class="fixed top-0 right-0 z-50 w-full h-16 bg-fuchsia-300 text-white font-bold md:text-xl flex 
      justify-between items-center px-10 bg-[linear-gradient(to_left,#273338,#2B5748,#618764,#9CB080)] shadow-xl shadow-black/35">
-        <ul class="flex gap-10 justify-center items-center">
+        <ul class="hidden md:flex gap-10 justify-center items-center">
             <li
                 class="hover:bg-white hover:text-[#273338] rounded-xl px-4 py-2 cursor-pointer transition-all duration-300">
                 <a href="#main">عرض
                     السور</a>
             </li>
-            <li
-                class="hover:bg-white hover:text-[#273338] rounded-xl px-4 py-2 cursor-pointer transition-all duration-300">
-                <a href="#sec1">تفسير</a>
-            </li>
+
             <li
                 class="hover:bg-white hover:text-[#273338] rounded-xl px-4 py-2 cursor-pointer transition-all duration-300">
                 <a href="#sec2">بث
@@ -42,7 +39,57 @@
                 class="hover:bg-white hover:text-[#273338] rounded-xl px-4 py-2 cursor-pointer transition-all duration-300">
                 <a href="#sec3">راديو</a>
             </li>
+            <li
+                class="hover:bg-white hover:text-[#273338] rounded-xl px-4 py-2 cursor-pointer transition-all duration-300">
+                <a href="#sec1">تفسير</a>
+            </li>
         </ul>
+
+        <!-- menu in mobile responsive -->
+        <div class="flex md:hidden"><i class="fa-solid fa-bars font-bold text-xl cursor-pointer"></i></div>
+
+        <ul class="menu hidden absolute flex-col bg-[linear-gradient(to_left,#273338,#2B5748,#618764,#9CB080)] 
+        rounded-xl p-3 gap-10 justify-center items-center font-bold top-20 right-2">
+            <li
+                class="hover:bg-white hover:text-[#273338] rounded-xl px-4 py-2 cursor-pointer transition-all duration-300">
+                <a href="#main">عرض
+                    السور</a>
+            </li>
+
+            <li
+                class="hover:bg-white hover:text-[#273338] rounded-xl px-4 py-2 cursor-pointer transition-all duration-300">
+                <a href="#sec2">بث
+                    مباشر</a>
+            </li>
+            <li
+                class="hover:bg-white hover:text-[#273338] rounded-xl px-4 py-2 cursor-pointer transition-all duration-300">
+                <a href="#sec3">راديو</a>
+            </li>
+            <li
+                class="hover:bg-white hover:text-[#273338] rounded-xl px-4 py-2 cursor-pointer transition-all duration-300">
+                <a href="#sec1">تفسير</a>
+            </li>
+        </ul>
+        <script>
+            let menuIcon = document.querySelector(".fa-bars")
+            let menu = document.querySelector(".menu")
+
+            menuIcon.addEventListener('click', function () {
+
+                menu.classList.toggle("hidden")
+                if (menu.classList.contains("hidden")) {
+                    menuIcon.classList.add("fa-bars")
+                    menuIcon.classList.remove("fa-xmark")
+                }
+                else {
+                    menuIcon.classList.remove("fa-bars")
+                    menuIcon.classList.add("fa-xmark")
+                }
+            })
+
+        </script>
+
+
         <div class="flex justify-center items-center">
             <a href="#" class="flex justify-center items-center">
                 <h2 class="font-bold p-0 m-0 mr-4 flex justify-center items-center">موقع القرآن الكريم
@@ -63,7 +110,8 @@
                 <p class="text-xl tracking-widest">رحلة طيبة في رحاب </p>
                 <span class="text-4xl"><strong>القرآن الكريم</strong></span>
             </div>
-            <div class="w-full bg-white rounded-xl flex flex-col justify-center items-center gap-4 lg:gap-7 py-10 px-2 lg:px-4">
+            <div
+                class="w-full bg-white rounded-xl flex flex-col justify-center items-center gap-4 lg:gap-7 py-10 px-2 lg:px-4">
                 <div class="container flex flex-col md:flex-row justify-evenly items-center gap-4 lg:gap-7 py-10">
                     <div class=" flex flex-col gap-4 ">
                         <label class=" text-[#273338] font-bold text-lg">اختر قارئ</label>
@@ -145,20 +193,22 @@
                     <i
                         class="fa-solid fa-caret-down absolute text-[#273338] left-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
                 </div>
-                <audio src="" id="radio" controls></ش>
+                <audio src="" id="radio" class="w-full md:w-96 ring-1 ring-[#273338] rounded-full" controls></ش>
             </div>
         </div>
     </section>
 
 
-        <section id="sec4" class="w-full  flex justify-center items-center p-10 scroll-mt-10">
-        <div class="container h-96 flex justify-center gap-6 items-center py-10 bg-[url('images/ashkan-forouzani-7blIFp0kFP4-unsplash.jpg')] 
-        bg-no-repeat bg-cover  rounded-xl">
+    <section id="sec4" class="w-full  flex justify-center items-center p-10 scroll-mt-10">
+        <div class="container w-full h-fit flex justify-center gap-6 items-center py-10 px-4 bg-[url('images/ashkan-forouzani-7blIFp0kFP4-unsplash.jpg')] 
+        bg-no-repeat bg-contain md:bg-cover rounded-xl">
             <div class="flex flex-col justify-center items-center gap-8">
-                <h2 class="font-bold text-white text-2xl flex justify-center items-center gap-4">إذاعة القرآن الكريم من القاهرة
+                <h2 class="font-bold text-white text-xl md:text-2xl flex justify-center items-center gap-4">إذاعة القرآن الكريم من
+                    القاهرة
                     <img src="images\radio_15201444.png" class="w-8 h-8" alt="">
                 </h2>
-                <audio src="https://stream.zeno.fm/tv0x28xvyc9uv" id="cairoRadio" controls></audio>
+                <audio src="https://stream.zeno.fm/tv0x28xvyc9uv" class="w-full md:w-96 ring-1 ring-[#273338] rounded-full"  
+                id="cairoRadio" controls></audio>
             </div>
         </div>
     </section>
