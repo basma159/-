@@ -88,3 +88,21 @@ A responsive Quran web application that allows users to listen to Quran recitati
 ## Author
 
 Developed by Basma Ahmed
+
+## Live Demo
+
+🔗 https://basma159.github.io/-/
+
+## Screenshots
+
+### Desktop View
+
+![Desktop Home](ScreenShot/desktop.png)
+
+### Tablet View
+
+![Tablet View](ScreenShot/taplet.png)
+
+### Mobile View
+
+![Mobile View](ScreenShot/mobile.png)
