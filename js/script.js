@@ -9,9 +9,9 @@ async function getReciters() {
     // console.log(data.reciters.length)
 
     chooseReciters.innerHTML = `<option value="">اختر قارئ</option>`
-    const filterReciters =data.reciters.filter(item=>
+    const filterReciters = data.reciters.filter(item =>
         item.id !== 183 && item.id !== 184 && item.id !== 185)
-        // console.log(filterReciters.length)
+    // console.log(filterReciters.length)
 
     filterReciters.forEach(reciter =>
         chooseReciters.innerHTML += `<option  value="${reciter.id}">${reciter.name}</option>`);
@@ -94,6 +94,48 @@ async function playTasir(Tafasir) {
     tafsir.src = Tafasir
     tafsir.play()
 }
+//surahs of quran 
+async function surahs() {
+    const container = document.querySelector(".container1")
+    const response = await fetch('http://api.alquran.cloud/v1/meta')
+    const data = await response.json()
+    // console.log(data.data.surahs.references)
+    data.data.surahs.references.forEach(item => {
+        container.innerHTML += `<div class="text-[#273338] font-bold bg-white py-2 md:text-sm lg:text-lg rounded-lg hover:ring-1 hover:ring-[#273338]
+        flex flex-col justify-center items-center gap-2 cursor-pointer hover:shadow-lg hover:shadow-black">
+        <p>${item.name}</p>
+        <p>${item.englishName}</p>
+        </div>`
+    })
+
+}
+
+surahs()
+// Display pages of quran
+
+async function chooseQuran() {
+    const choosePage = document.querySelector("#choosePage")
+    const response = await fetch('https://quran.yousefheiba.com/api/quranPagesImage')
+    const data = await response.json()
+    // console.log(data.pages)
+    choosePage.innerHTML = `<option>اختر صفحة من القرآن</option>`
+
+    data.pages.forEach(item => {
+        choosePage.innerHTML += `<option value="${item.page_url}">${item.page_number}</option>`
+    })
+    choosePage.addEventListener('change', e => {
+        const selectePage = choosePage.options[choosePage.selectedIndex]
+        displayQuran(selectePage.value)
+    })
+
+}
+chooseQuran()
+
+async function displayQuran(display) {
+    const displayQuran = document.querySelector("#displayQuran")
+    displayQuran.src = display
+}
+
 
 // tadabor quran
 
@@ -102,7 +144,6 @@ async function surahTadabor() {
     // https://mp3quran.net/api/v3/tadabor?sura=3&language=ar
     const response = await fetch(`${apiUrl}/tadabor?sura=3&language=${language}`)
     const data = await response.json()
-    console.log(data.tadabor)
     chooseTadabor.innerHTML = `<option>اختر آية</option>`
 
     data.tadabor['3'].forEach((item) => {
