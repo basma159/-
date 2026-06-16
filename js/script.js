@@ -6,10 +6,15 @@ async function getReciters() {
     const chooseReciters = document.querySelector("#chooseReciters")
     const response = await fetch(`${apiUrl}/reciters?language=${language}`)
     const data = await response.json()
+    // console.log(data.reciters.length)
 
     chooseReciters.innerHTML = `<option value="">اختر قارئ</option>`
-    data.reciters.forEach(reciter => chooseReciters.innerHTML += `<option  value="${reciter.id}">${reciter.name}</option>`);
+    const filterReciters =data.reciters.filter(item=>
+        item.id !== 183 && item.id !== 184 && item.id !== 185)
+        // console.log(filterReciters.length)
 
+    filterReciters.forEach(reciter =>
+        chooseReciters.innerHTML += `<option  value="${reciter.id}">${reciter.name}</option>`);
     chooseReciters.addEventListener('change', (e) => getRewayah(e.target.value))
 }
 
